@@ -1,0 +1,98 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #ffffff;
+  --bg-subtle: #f5f5f7;
+  --ink: #1d1d1f;
+  --ink-soft: #424245;
+  --ink-mute: #86868b;
+  --line: #d2d2d7;
+  --accent: #0071e3;
+}
+
+* { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+
+html, body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text",
+    "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-feature-settings: "ss01", "ss02";
+  scroll-behavior: smooth;
+}
+
+/* Refined typography */
+.h-display {
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  line-height: 1.05;
+}
+.h-eyebrow {
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  text-transform: none;
+  color: var(--ink-mute);
+}
+
+/* Apple-style pill button */
+.btn-pill {
+  @apply inline-flex items-center justify-center px-5 py-2.5 rounded-full
+         text-[15px] font-medium transition-all duration-200;
+}
+.btn-primary {
+  @apply btn-pill text-white;
+  background: var(--accent);
+}
+.btn-primary:hover { background: #0077ed; transform: translateY(-1px); }
+
+.btn-ghost {
+  @apply btn-pill;
+  color: var(--accent);
+  border: 1px solid var(--accent);
+  background: transparent;
+}
+.btn-ghost:hover { background: rgba(0,113,227,0.06); }
+
+.btn-dark {
+  @apply btn-pill text-white;
+  background: var(--ink);
+}
+.btn-dark:hover { background: #000; }
+
+/* Container */
+.container-page { @apply max-w-[1200px] mx-auto px-5 sm:px-6 lg:px-8; }
+.container-wide { @apply max-w-[1440px] mx-auto px-5 sm:px-6 lg:px-8; }
+
+/* Card */
+.card-product {
+  @apply relative rounded-3xl bg-bg-subtle overflow-hidden transition-all duration-500;
+}
+.card-product:hover { transform: translateY(-4px); box-shadow: 0 24px 48px -12px rgba(0,0,0,0.12); }
+
+/* Hide scrollbar utility */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* Stagger reveal */
+.reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.7s cubic-bezier(0.22,1,0.36,1), transform 0.7s cubic-bezier(0.22,1,0.36,1); }
+.reveal.in { opacity: 1; transform: translateY(0); }
+
+/* Gradient hero text */
+.text-gradient {
+  background: linear-gradient(120deg, #1d1d1f 30%, #6e6e73 70%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Premium product backdrop blobs (used on hero) */
+.blob {
+  position: absolute;
+  filter: blur(72px);
+  opacity: 0.55;
+  pointer-events: none;
+  border-radius: 50%;
+}
